@@ -1,0 +1,36 @@
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.idea/
+.vscode/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Downloaded content
+*.mp4
+*.mp3
+*.webm
+*.m4a
+*.part
+*.ytdl
+
+# Downloaded folders (course videos)
+End-to-End*/
+Learn MLOps*/
+MLOps Course*/
+MLOps Pipeline*/
+PyTorch*/
+Ultimate MLOps*/
+
+# OS files
+.DS_Store
+Thumbs.db
