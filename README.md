@@ -53,7 +53,7 @@ youtube_downloader/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/youtube_downloader.git
+git clone https://github.com/AhmedBassoul1/youtube_downloader.git
 cd youtube_downloader
 ```
 
