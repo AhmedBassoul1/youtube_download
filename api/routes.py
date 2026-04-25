@@ -19,7 +19,8 @@ def run_download_task(job_id: str, url: str, is_audio: bool):
     jobs[job_id] = {"status": "processing", "url": url}
     try:
         # Generate output directory (logic from your notebook)
-        output_dir = "downloads"
+        output_dir = dl_engine.get_playlist_name(url)
+        output_dir = dl_engine.re.sub(r'[<>:"/\\|?*]', '', output_dir)
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
 
