@@ -8,13 +8,21 @@
 <body>
     <div class="container">
         <h1>YouTube Downloader</h1>
-        <input type="text" id="urlInput" placeholder="Paste YouTube link here...">
+        <input type="text" id="urlInput" value="https://www.youtube.com/watch?v=MvsAesQ-4zA" placeholder="Paste YouTube link here...">
         <label>
             <input type="checkbox" id="audioOnly"> Download as Audio (MP3)
         </label>
         <button onclick="startDownload()">Download</button>
         <div id="status"></div>
+            <label>Quality:</label>
+        <select id="qualitySelect">
+            <option value="4k">4K</option>
+            <option value="1080p" selected>1080p (HD)</option>
+            <option value="720p">720p</option>
+            <option value="480p">480p</option>
+            <option value="low">Low (Data Saver)</option>
+        </select>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
