@@ -2,7 +2,7 @@ import subprocess
 import os
 import sys
 from plyer import notification
-import command 
+from server import command
 import re
 import yt_dlp
 

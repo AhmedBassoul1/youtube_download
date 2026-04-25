@@ -10,7 +10,7 @@ def get_command_video(folder_name, video_url):
         video_url
     ]
 
-def get_command_audio(video_url):
+def get_command_audio(folder_name, video_url):
     return [
         "yt-dlp",
         "--extractor-args", "youtube:player_client=android_vr,web;player_skip=configs",
