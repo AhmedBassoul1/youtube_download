@@ -470,6 +470,7 @@ button:active { transform: translateY(0); }
 }
 
 .playlist-label {
+    position: relative;          /* ← ajoute cette ligne */
     display: flex;
     align-items: center;
     gap: 10px;
@@ -485,8 +486,12 @@ button:active { transform: translateY(0); }
 
 .playlist-checkbox {
     position: absolute;
+    width: 1px;
+    height: 1px;
     opacity: 0;
     pointer-events: none;
+    top: 0;
+    left: 0;
 }
 
 .playlist-checkmark {
