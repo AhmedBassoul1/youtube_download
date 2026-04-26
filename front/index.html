@@ -24,7 +24,20 @@
         </div>
 
         <div class="input-group">
-            <input type="text" id="urlInput"  placeholder="Paste YouTube link here...">
+            <input type="text" id="urlInput" placeholder="Paste YouTube link here...">
+        </div>
+
+        <!-- Playlist Selector -->
+        <div id="playlistContainer" class="playlist-group hidden">
+            <div class="playlist-header">
+                <span class="playlist-title" id="playlistTitle">Playlist</span>
+                <div class="playlist-actions">
+                    <button type="button" class="action-btn" onclick="selectAllVideos(true)">Select All</button>
+                    <button type="button" class="action-btn" onclick="selectAllVideos(false)">Deselect All</button>
+                </div>
+            </div>
+            <div class="playlist-list" id="playlistList"></div>
+            <div class="playlist-count" id="playlistCount"></div>
         </div>
 
         <div class="input-group">
