@@ -27,6 +27,19 @@
             <input type="text" id="urlInput"  placeholder="Paste YouTube link here...">
         </div>
 
+        <div class="input-group">
+            <label class="folder-label" for="outputDir">Save to</label>
+            <div class="folder-row">
+                <input type="text" id="outputDir" placeholder="Default folder is the current directory" readonly>
+                <button type="button" id="browseBtn" class="browse-btn" onclick="pickFolder()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                    </svg>
+                    <span>Browse</span>
+                </button>
+            </div>
+        </div>
+
         <div class="toggle-group">
             <label class="toggle-switch">
                 <input type="checkbox" id="audioOnly">
