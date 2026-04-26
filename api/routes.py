@@ -17,26 +17,37 @@ class DownloadRequest(BaseModel):
     is_audio: bool = False
     quality: str = "1080p"
 
+def validate_youtube_url(url):
+    pattern = r'^(https?://)?(www\.|m\.)?(youtube\.com|youtu\.be)/(watch\?v=|playlist\?list=|embed/|v/)?([a-zA-Z0-9_-]{11}|[a-zA-Z0-9_-]{34})'
+    
+    return bool(dl_engine.re.match(pattern, url))
+
 def run_download_task(job_id: str, url: str, is_audio: bool, quality: str):
-    """Background task to handle the download."""
     jobs[job_id] = {"status": "processing", "url": url}
+
+    if not validate_youtube_url(url):
+        jobs[job_id] = {"status": "failed", "error": "Invalid YouTube URL"}
+        return
+
     try:
-        # Generate output directory (logic from your notebook)
         output_dir = dl_engine.get_playlist_name(url)
-        output_dir = dl_engine.re.sub(r'[<>:"/\\|?*]', '', output_dir)
+        output_dir = re.sub(r'[<>:"/\\|?*]', '', output_dir)
+
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
 
-        # Get command
         if is_audio:
             full_cmd = cmd_engine.get_command_audio(output_dir, url, quality=quality)
         else:
             full_cmd = cmd_engine.get_command_video(output_dir, url, quality=quality)
 
-        # Run process
-        dl_engine.downloader(full_cmd)
-        
+        result = dl_engine.downloader(full_cmd)
+
+        if result is False:
+            raise Exception("Download failed")
+
         jobs[job_id]["status"] = "completed"
+
     except Exception as e:
         jobs[job_id] = {"status": "failed", "error": str(e)}
 
