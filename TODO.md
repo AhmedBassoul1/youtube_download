@@ -29,3 +29,4 @@
 2. Cancel button
 3. Download history with "open folder"
 4. Thumbnails + durations in playlist panel
+5- exe and apk Releases
