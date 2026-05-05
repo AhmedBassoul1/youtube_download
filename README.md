@@ -91,8 +91,12 @@ Start the backend:
 uvicorn main:app --reload
 ```
 
-Open the frontend by opening `front/index.html` in your browser.
+Start the frontend:
 
+```bash
+cd front/
+python3 -m http.server 8080
+```
 ### How to download
 
 **Single Video:**
