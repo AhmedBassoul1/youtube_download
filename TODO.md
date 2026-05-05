@@ -3,7 +3,7 @@
 ## Quick wins
 - [ ] Real-time download progress bar
 - [ ] Cancel button for running downloads
-- [ ] Download history (persisted in JSON)
+- [.] Download history (persisted in JSON)
 - [ ] "Open folder" button on completed downloads
 - [ ] Thumbnails in playlist panel
 - [ ] Video duration in playlist panel
