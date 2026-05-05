@@ -171,7 +171,13 @@ async function startDownload() {
     const outputDir = document.getElementById('outputDir').value.trim();
     const statusDiv = document.getElementById('status');
     const selectedIndices = getSelectedIndices();
-
+    await fetch('http://127.0.0.1:8000/log', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                url: url,
+            })
+        });
     if (!url) { alert("Please enter a URL"); return; }
     if (selectedIndices !== null && selectedIndices.length === 0) {
         alert("Please select at least one video from the playlist.");

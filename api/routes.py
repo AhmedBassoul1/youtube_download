@@ -8,6 +8,7 @@ import os
 import re
 import sys
 import subprocess
+import json
 
 router = APIRouter()
 
@@ -76,7 +77,6 @@ def _open_native_folder_dialog() -> str:
     raise RuntimeError(
         "No folder picker available. Install 'zenity' (GNOME) or 'kdialog' (KDE)."
     )
-
 
 @router.get("/pick-folder")
 def pick_folder():
@@ -166,3 +166,21 @@ async def start_download(request: DownloadRequest, background_tasks: BackgroundT
 @router.get("/status/{job_id}")
 async def get_status(job_id: str):
     return jobs.get(job_id, {"status": "not_found"})
+
+
+@router.post("/log")
+async def log_url(data: dict):
+    url = data.get("url")
+    
+    print(f"Logging URL: {url}")
+
+    file_path = "history.json"
+    history = []
+    if os.path.exists(file_path):
+        with open(file_path, "r") as f:
+            history = json.load(f)
+            
+    history.append(url)
+    
+    with open(file_path, "w") as f:
+        json.dump(history, f, indent=4)
