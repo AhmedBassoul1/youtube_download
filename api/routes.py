@@ -26,7 +26,7 @@ class DownloadRequest(BaseModel):
 
 
 def validate_youtube_url(url):
-    pattern = r'^(https?://)?(www\.|m\.)?(youtube\.com|youtu\.be)/(watch\?v=|playlist\?list=|embed/|v/)?([a-zA-Z0-9_-]{11}|[a-zA-Z0-9_-]{34})'
+    pattern = r'^(https?://)?(www\.|m\.|music\.)?(youtube\.com|youtu\.be)/(watch\?v=|playlist\?list=|embed/|v/)?([a-zA-Z0-9_-]{11,34})(&.*)?$'
     return bool(re.match(pattern, url))
 
 
