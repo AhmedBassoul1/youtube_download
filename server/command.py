@@ -14,8 +14,14 @@ def get_command_video(folder_name, video_url, quality="1080p", playlist_items=No
         "--extractor-args", "youtube:player_client=android_vr,web;player_skip=configs",
         "-f", format_str,
         "--user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
-        "--merge-output-format", "mp4",
-        "--postprocessor-args", "ffmpeg:-movflags +faststart",
+        
+        # --- CRITICAL MERGE SETTINGS ---
+        "--merge-output-format", "mp4",      # Forces merger to result in .mp4
+        "--prefer-ffmpeg",                    # Ensures FFmpeg is used
+        "--fixup", "detect_or_warn",          # Fixes those "Opus header" errors automatically
+        "--postprocessor-args", "ffmpeg:-movflags +faststart", # Optimizes for web playback
+        
+        # Output: %(ext)s is required so the merger knows what to name the final file
         "-o", f"{folder_name}/%(title)s.%(ext)s",
     ]
     
@@ -32,7 +38,7 @@ def get_command_audio(folder_name, video_url, quality="1080p", playlist_items=No
         "-f", "bestaudio/best",
         "--extract-audio",
         "--audio-format", "mp3",
-        "--audio-quality", "0",
+        "--audio-quality", "0", # Best quality
         "--user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
         "-o", f"{folder_name}/%(title)s.%(ext)s",
     ]
