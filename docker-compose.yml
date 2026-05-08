@@ -1,0 +1,16 @@
+services:
+  backend:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  frontend:
+    build: ./front
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./front:/app
