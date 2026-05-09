@@ -2,8 +2,8 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Copy the front folder content
+# Copy the frontend files
 COPY . .
 
-# Command to run the simple http server
+# Run the simple server
 CMD ["python3", "-m", "http.server", "8080"]
