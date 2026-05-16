@@ -22,7 +22,7 @@ def get_command_video(folder_name, video_url, quality="1080p", playlist_items=No
         "--postprocessor-args", "ffmpeg:-movflags +faststart", # Optimizes for web playback
         
         # Output: %(ext)s is required so the merger knows what to name the final file
-        "-o", f"Download/{folder_name}/%(title)s.%(ext)s",
+        "-o", f"{folder_name}/%(title)s.%(ext)s",
     ]
     
     if playlist_items:
@@ -40,7 +40,7 @@ def get_command_audio(folder_name, video_url, quality="1080p", playlist_items=No
         "--audio-format", "mp3",
         "--audio-quality", "0", # Best quality
         "--user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
-        "-o", f"Download/{folder_name}/%(title)s.%(ext)s",
+        "-o", f"{folder_name}/%(title)s.%(ext)s",
     ]
     
     if playlist_items:
