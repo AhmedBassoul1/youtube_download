@@ -1,54 +1,166 @@
 [
-    "blabla",
-    "https://www.youtube.com/watch?v=o6vbe5G7xNo",
-    "https://www.youtube.com/watch?v=V_xro1bcAuA",
-    "https://www.youtube.com/watch?v=V_xro1bcAuA",
-    "https://www.youtube.com/watch?v=V_xro1bcAuA",
-    "https://www.youtube.com/watch?v=V_xro1bcAuA",
-    "https://www.youtube.com/watch?v=V_xro1bcAuA",
-    "https://www.youtube.com/playlist?list=PLWKjhJtqVAblStefaz_YOVpDWqcRScc2s",
-    "https://www.youtube.com/playlist?list=PLWKjhJtqVAblStefaz_YOVpDWqcRScc2s",
-    "https://www.youtube.com/playlist?list=PLWKjhJtqVAblStefaz_YOVpDWqcRScc2s",
-    "https://www.youtube.com/watch?v=FwjaHCVNBWA",
-    "https://www.youtube.com/watch?v=l5kH01fprJI",
-    "https://www.youtube.com/watch?v=4ePNrdxWtY0",
-    "https://www.youtube.com/watch?v=DwuAypulTLA",
-    "https://www.youtube.com/watch?v=VAXJ2MAHjis",
-    "https://www.youtube.com/watch?v=8EMW7io4rSI",
-    "https://music.youtube.com/watch?v=H2A93Pn2agQ",
-    "https://music.youtube.com/watch?v=H2A93Pn2agQ",
-    "https://music.youtube.com/watch?v=H2A93Pn2agQ",
-    "https://music.youtube.com/watch?v=LMAOXw4BA78",
-    "https://music.youtube.com/watch?v=cHTWikFbhUY",
-    "https://music.youtube.com/watch?v=jSDmnjDncbE",
-    "https://music.youtube.com/watch?v=VpFmRVbkPRY&list=OLAK5uy_m-n_MIMGnJnu7HixVbPM8myerZlRyyHxs",
-    "https://www.youtube.com/playlist?list=PLlET0GsrLUL5HKJk1rb7t32sAs_iAlpZe",
-    "https://www.youtube.com/watch?v=wzBs7RKzVD0",
-    "https://www.youtube.com/playlist?list=PLlET0GsrLUL5HKJk1rb7t32sAs_iAlpZe",
-    "https://www.youtube.com/watch?v=rkNS7wMlWJo",
-    "https://www.youtube.com/watch?v=aMOgezEHXUc",
-    "https://www.youtube.com/playlist?list=PLIhvC56v63IJVXv0GJcl9vO5Z6znCVb1P",
-    "https://www.youtube.com/playlist?list=PLT98CRl2KxKHaKA9-4_I38sLzK134p4GJ",
-    "https://www.youtube.com/playlist?list=PLT98CRl2KxKHaKA9-4_I38sLzK134p4GJ",
-    "https://www.youtube.com/playlist?list=PLT98CRl2KxKHaKA9-4_I38sLzK134p4GJ",
-    "https://www.youtube.com/playlist?list=PLojaiJMsh0dnvv98punIYYbffc5wNPpNR",
-    "https://www.youtube.com/playlist?list=PLoCqgrjKAPd0C2oeqwnoHdvxJw3ngBjxz",
-    "https://www.youtube.com/watch?v=kCSfcQhiUIs",
-    "https://www.youtube.com/watch?v=VEOQmAlxTXA",
-    "https://www.youtube.com/watch?v=0Uu_rihuGQg",
-    "https://www.youtube.com/watch?v=xakkQPbGeQE",
-    "https://www.youtube.com/watch?v=4NTUj4B1qpM",
-    "https://www.youtube.com/watch?v=4ip4hRRZQ1Q",
-    "https://www.youtube.com/watch?v=kxGz4Q2yK3w",
-    "https://www.youtube.com/watch?v=G1A4N6L36I4",
-    "https://www.youtube.com/watch?v=Z6xveY9bzms",
-    "https://www.youtube.com/watch?v=35uJEHs3jcs",
-    "https://www.youtube.com/watch?v=jxK8UnHAW5Y",
-    "https://www.youtube.com/playlist?list=PLqtA0-aQZf9o6z-5dv4lxDN2WwQe8iasT",
-    "https://www.youtube.com/watch?v=KZYqugtbcG0",
-    "https://www.youtube.com/watch?v=i_lYt3uX63o",
-    "https://www.youtube.com/watch?v=SSJ7yCFOomk",
-    "https://www.youtube.com/watch?v=zKGW9V1WSl",
-    "https://www.youtube.com/watch?v=zKGW9V1WSl8",
-    "https://www.youtube.com/watch?v=zkQu5LccK4c"
+  {
+    "url": "blabla"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=o6vbe5G7xNo"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=V_xro1bcAuA"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=V_xro1bcAuA"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=V_xro1bcAuA"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=V_xro1bcAuA"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=V_xro1bcAuA"
+  },
+  {
+    "url": "https://www.youtube.com/playlist?list=PLWKjhJtqVAblStefaz_YOVpDWqcRScc2s"
+  },
+  {
+    "url": "https://www.youtube.com/playlist?list=PLWKjhJtqVAblStefaz_YOVpDWqcRScc2s"
+  },
+  {
+    "url": "https://www.youtube.com/playlist?list=PLWKjhJtqVAblStefaz_YOVpDWqcRScc2s"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=FwjaHCVNBWA"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=l5kH01fprJI"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=4ePNrdxWtY0"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=DwuAypulTLA"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=VAXJ2MAHjis"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=8EMW7io4rSI"
+  },
+  {
+    "url": "https://music.youtube.com/watch?v=H2A93Pn2agQ"
+  },
+  {
+    "url": "https://music.youtube.com/watch?v=H2A93Pn2agQ"
+  },
+  {
+    "url": "https://music.youtube.com/watch?v=H2A93Pn2agQ"
+  },
+  {
+    "url": "https://music.youtube.com/watch?v=LMAOXw4BA78"
+  },
+  {
+    "url": "https://music.youtube.com/watch?v=cHTWikFbhUY"
+  },
+  {
+    "url": "https://music.youtube.com/watch?v=jSDmnjDncbE"
+  },
+  {
+    "url": "https://music.youtube.com/watch?v=VpFmRVbkPRY&list=OLAK5uy_m-n_MIMGnJnu7HixVbPM8myerZlRyyHxs"
+  },
+  {
+    "url": "https://www.youtube.com/playlist?list=PLlET0GsrLUL5HKJk1rb7t32sAs_iAlpZe"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=wzBs7RKzVD0"
+  },
+  {
+    "url": "https://www.youtube.com/playlist?list=PLlET0GsrLUL5HKJk1rb7t32sAs_iAlpZe"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=rkNS7wMlWJo"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=aMOgezEHXUc"
+  },
+  {
+    "url": "https://www.youtube.com/playlist?list=PLIhvC56v63IJVXv0GJcl9vO5Z6znCVb1P"
+  },
+  {
+    "url": "https://www.youtube.com/playlist?list=PLT98CRl2KxKHaKA9-4_I38sLzK134p4GJ"
+  },
+  {
+    "url": "https://www.youtube.com/playlist?list=PLT98CRl2KxKHaKA9-4_I38sLzK134p4GJ"
+  },
+  {
+    "url": "https://www.youtube.com/playlist?list=PLT98CRl2KxKHaKA9-4_I38sLzK134p4GJ"
+  },
+  {
+    "url": "https://www.youtube.com/playlist?list=PLojaiJMsh0dnvv98punIYYbffc5wNPpNR"
+  },
+  {
+    "url": "https://www.youtube.com/playlist?list=PLoCqgrjKAPd0C2oeqwnoHdvxJw3ngBjxz"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=kCSfcQhiUIs"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=VEOQmAlxTXA"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=0Uu_rihuGQg"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=xakkQPbGeQE"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=4NTUj4B1qpM"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=4ip4hRRZQ1Q"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=kxGz4Q2yK3w"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=G1A4N6L36I4"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=Z6xveY9bzms"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=35uJEHs3jcs"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=jxK8UnHAW5Y"
+  },
+  {
+    "url": "https://www.youtube.com/playlist?list=PLqtA0-aQZf9o6z-5dv4lxDN2WwQe8iasT"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=KZYqugtbcG0"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=i_lYt3uX63o"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=SSJ7yCFOomk"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=zKGW9V1WSl"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=zKGW9V1WSl8"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=zkQu5LccK4c"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=DwuAypulTLA",
+    "title": "#1 DAX Fridays! 101: The basics of the DAX Language",
+    "folder": "/home/ahmed/Desktop/Reseaux/#1 DAX Fridays! 101 The basics of the DAX Language",
+    "status": "failed",
+    "is_audio": false,
+    "date": "2026-06-12T18:07:12.796104+00:00"
+  }
 ]

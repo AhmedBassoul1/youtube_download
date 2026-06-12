@@ -1,0 +1,8 @@
+{
+  "last_folder": "/home/ahmed/Desktop/Reseaux",
+  "filename_template": "%(title)s.%(ext)s",
+  "duplicate_policy": "skip",
+  "post_hook": "",
+  "channel_profiles": {},
+  "max_parallel_downloads": 3
+}
