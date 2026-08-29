@@ -28,3 +28,5 @@
 - [ ] exe and apk Releases — build instructions in BUILDING.md
       (exe via PyInstaller; an APK is not applicable to a Python/FastAPI
       desktop app — see notes in BUILDING.md)
+
+https://www.youtube.com/watch?v=eew6N-87FDs
