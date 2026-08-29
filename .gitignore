@@ -35,3 +35,6 @@ Ultimate MLOps*/
 .DS_Store
 Thumbs.db
 
+# Sensitive: YouTube session cookies
+cookies.txt
+

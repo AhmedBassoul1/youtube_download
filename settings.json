@@ -1,8 +1,10 @@
 {
-  "last_folder": "/home/ahmed/Desktop/Reseaux",
+  "last_folder": "/home/ahmed/Desktop",
   "filename_template": "%(title)s.%(ext)s",
   "duplicate_policy": "skip",
   "post_hook": "",
   "channel_profiles": {},
-  "max_parallel_downloads": 3
+  "max_parallel_downloads": 1,
+  "cookies_browser": "",
+  "cookies_file": ""
 }

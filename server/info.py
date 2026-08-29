@@ -1,9 +1,12 @@
 """Metadata extraction: video preview & playlist info with thumbnails and
 durations (TODO items: thumbnails in playlist panel, video duration in
 playlist panel, video preview before download)."""
+import os
 import re
 
 import yt_dlp
+
+from server import options as opt_engine
 
 _FLAT_OPTS = {
     "extract_flat": "in_playlist",
@@ -11,6 +14,18 @@ _FLAT_OPTS = {
     "no_warnings": True,
     "skip_download": True,
 }
+
+_BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+def _flat_opts():
+    """Same cookie jar as the downloader, so a video that previews fine is
+    also one the downloader can actually reach."""
+    opts = dict(_FLAT_OPTS)
+    auto = os.path.join(_BASE_DIR, "cookies.txt")
+    if opt_engine.is_valid_cookie_file(auto):
+        opts["cookiefile"] = auto
+    return opts
 
 
 def extract_playlist_id(url):
@@ -48,7 +63,7 @@ def get_media_info(url):
     is_playlist = bool(extract_playlist_id(url))
     target = normalize_to_playlist_url(url) if is_playlist else url
 
-    with yt_dlp.YoutubeDL(_FLAT_OPTS) as ydl:
+    with yt_dlp.YoutubeDL(_flat_opts()) as ydl:
         info = ydl.extract_info(target, download=False)
 
     if info is None:
@@ -91,7 +106,7 @@ def get_title_for_folder(url):
     """Title used to name the output subfolder (playlist title or video title)."""
     is_playlist = bool(extract_playlist_id(url))
     target = normalize_to_playlist_url(url) if is_playlist else url
-    with yt_dlp.YoutubeDL(_FLAT_OPTS) as ydl:
+    with yt_dlp.YoutubeDL(_flat_opts()) as ydl:
         info = ydl.extract_info(target, download=False)
     if not info or not info.get("title"):
         raise RuntimeError("Could not resolve a title for this URL")

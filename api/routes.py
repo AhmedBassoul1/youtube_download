@@ -6,6 +6,7 @@ import re
 import sys
 import subprocess
 
+from server import diagnostics as diag
 from server import info as info_engine
 from server import options as opt_engine
 from server import storage
@@ -82,6 +83,16 @@ class SettingsPatch(BaseModel):
 
 class OpenFolderRequest(BaseModel):
     path: str
+
+
+# ---------------- Diagnostics ----------------
+
+@router.get("/diagnostics")
+async def get_diagnostics():
+    """Reports the environment problems that surface as confusing yt-dlp
+    errors: no JS runtime (-> HTTP 403 on media), missing ffmpeg (-> merge
+    failures), unusable cookies.txt."""
+    return diag.report()
 
 
 # ---------------- Info / preview ----------------

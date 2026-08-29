@@ -23,6 +23,8 @@ DEFAULT_SETTINGS = {
     "post_hook": "",                   # TODO: post-download hooks
     "channel_profiles": {},            # TODO: per-channel quality profiles
     "max_parallel_downloads": 3,       # TODO: parallel downloads
+    "cookies_browser": "",             # "firefox" (recommended on Linux) | "chrome" | "" (disabled)
+    "cookies_file": "",                # path to a cookies.txt (Netscape format) — takes priority
 }
 
 

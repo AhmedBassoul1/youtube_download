@@ -4,21 +4,40 @@ Replaces the old subprocess-based command.py. Using the Python API instead of
 shelling out gives us: real-time progress hooks, cancellation, structured
 errors, and no command-injection surface.
 """
+import os
 import re
 
+
+def _quality_chain(max_height: int) -> str:
+    """Format chain with real fallbacks.
+
+    The old chain was `bestvideo[h<=N]+bestaudio/bestvideo+bestaudio/best`:
+    if no separate video+audio pair survived client filtering, yt-dlp had
+    nothing left that satisfied the height cap and raised "Requested format
+    is not available". We now also try progressive (muxed) formats, then a
+    height-capped `best`, then plain `best` as a last resort.
+    """
+    return (
+        f"bestvideo[height<={max_height}]+bestaudio/"
+        f"best[height<={max_height}]/"
+        f"bestvideo+bestaudio/"
+        f"best"
+    )
+
+
 QUALITY_MAP = {
-    "4k":    "bestvideo[height<=2160]+bestaudio/best[height<=2160]/best",
-    "1080p": "bestvideo[height<=1080]+bestaudio/best[height<=1080]/best",
-    "720p":  "bestvideo[height<=720]+bestaudio/best[height<=720]/best",
-    "480p":  "bestvideo[height<=480]+bestaudio/best[height<=480]/best",
-    "low":   "bestvideo[height<=360]+bestaudio/best[height<=360]/best",
+    "4k":    _quality_chain(2160),
+    "1080p": _quality_chain(1080),
+    "720p":  _quality_chain(720),
+    "480p":  _quality_chain(480),
+    "low":   _quality_chain(360),
 }
 
 VIDEO_CONTAINERS = {"mp4", "mkv", "webm"}
 AUDIO_FORMATS = {"mp3", "m4a", "opus", "flac"}
 
-USER_AGENT = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-              "(KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36")
+# Project root — used to auto-discover a cookies.txt sitting next to the app.
+_BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # TODO item: playlist range syntax "1-10, 15, 20-30"
 _RANGE_RE = re.compile(r"^\s*\d+\s*(-\s*\d+\s*)?(,\s*\d+\s*(-\s*\d+\s*)?)*$")
@@ -29,6 +48,18 @@ _ALLOWED_TEMPLATE_FIELDS = {
     "playlist_title", "playlist_index", "autonumber", "resolution", "duration",
 }
 _TEMPLATE_FIELD_RE = re.compile(r"%\((\w+)\)")
+
+
+def is_valid_cookie_file(path: str) -> bool:
+    """A malformed cookie jar makes yt-dlp abort before it lists any format,
+    so we check the Netscape header rather than handing it a broken file."""
+    if not path or not os.path.isfile(path) or not os.access(path, os.R_OK):
+        return False
+    try:
+        with open(path, "r", encoding="utf-8", errors="replace") as f:
+            return "netscape http cookie file" in f.readline().strip().lower()
+    except OSError:
+        return False
 
 
 def validate_playlist_range(expr: str) -> bool:
@@ -60,8 +91,12 @@ def build_ydl_opts(output_dir: str,
                    subtitles_langs: list = None,
                    filename_template: str = None,
                    duplicate_policy: str = "skip",
+                   cookies_browser: str = "",
+                   cookies_file: str = "",
                    progress_hook=None,
-                   postprocessor_hook=None) -> dict:
+                   postprocessor_hook=None,
+                   player_client: str = "",
+                   use_cookies: bool = True) -> dict:
     template = sanitize_filename_template(filename_template or "%(title)s.%(ext)s")
 
     # TODO item: duplicate detection (Skip / Overwrite / Rename)
@@ -72,11 +107,14 @@ def build_ydl_opts(output_dir: str,
 
     opts = {
         "outtmpl": f"{output_dir}/{template}",
-        "http_headers": {"User-Agent": USER_AGENT},
-        "extractor_args": {"youtube": {"player_client": ["android_vr", "web"],
-                                       "player_skip": ["configs"]}},
+        # NOTE: no hardcoded http_headers User-Agent and no forced
+        # player_client anymore. Pinning player_client to ["web"] meant every
+        # extraction went through the one client that YouTube now gates behind
+        # a PO token; yt-dlp discarded the gated formats and then reported
+        # "Requested format is not available". Letting yt-dlp choose its own
+        # client rotation (and send the matching UA per client) fixes it.
         "quiet": True,
-        "no_warnings": True,
+        "no_warnings": False,   # warnings explain *why* formats disappear
         "noprogress": True,
         "ignoreerrors": "only_download",   # one failed playlist item doesn't kill the job
         "overwrites": duplicate_policy == "overwrite",
@@ -85,6 +123,25 @@ def build_ydl_opts(output_dir: str,
         "fragment_retries": 5,
         "socket_timeout": 30,
     }
+
+    # Cookies: explicit file > cookies.txt found next to the app > browser.
+    # Auto-discovery matters because age/bot-gated videos otherwise expose
+    # zero downloadable formats, which surfaces as "format is not available".
+    explicit = (cookies_file or "").strip()
+    auto_cookies = os.path.join(_BASE_DIR, "cookies.txt")
+    if not use_cookies:
+        pass  # retry ladder disables cookies: stale jars cause HTTP 403
+    elif explicit and is_valid_cookie_file(explicit):
+        opts["cookiefile"] = explicit
+    elif is_valid_cookie_file(auto_cookies):
+        opts["cookiefile"] = auto_cookies
+    elif cookies_browser and cookies_browser.strip():
+        # "firefox" works on Linux without secretstorage; "chrome" needs it
+        opts["cookiesfrombrowser"] = (cookies_browser.strip(),)
+
+    # Only pinned when the retry ladder asks for a specific client.
+    if player_client:
+        opts["extractor_args"] = {"youtube": {"player_client": [player_client]}}
 
     if playlist_items:
         opts["playlist_items"] = playlist_items.replace(" ", "")
